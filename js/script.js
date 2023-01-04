@@ -4,21 +4,11 @@
             content: "zrób zakupy",
             done: false,
         },
+        {
+            content: "zaprowadź dziecko do przedszkola",
+            done: true,
+        },
     ];
-
-    const render = () => {
-        let htmlString = "";
-
-        for (const task of tasks) {
-            htmlString += `
-            <li class="list__item${task.done ? " list__item--done" : ""}">
-                ${task.content}
-            </li>
-            `;
-        }
-
-        document.querySelector(".js-list").innerHTML = htmlString;
-    };
 
     const addNewTask = (newTaskContent) => {
 
@@ -26,6 +16,36 @@
             content: newTaskContent,
         });
         render();
+    };
+
+    const removeTask = (index) => {
+        tasks.splice(index, 1);
+        render();
+    }
+
+    const render = () => {
+        let htmlString = "";
+
+        for (const task of tasks) {
+            htmlString += `
+            <li class="list__item${task.done ? " list__item--done" : ""}">
+                <button class="js-done list__button list__button--done">${task.done ? "✔" : ""}</button>
+            ${task.content}
+                <button class="js-remove list__button list__button--remove">🗑</button>
+                </li>
+            `;
+        }
+
+        document.querySelector(".js-list").innerHTML = htmlString;
+
+        const removeButtons = document.querySelectorAll(".js-remove");
+
+        removeButtons.forEach((removeButton, index) => {
+            removeButton.addEventListener("click", () => {
+                removeTask(index);
+            });
+
+        });
     };
 
     const onFormSubmit = (event) => {
@@ -40,12 +60,12 @@
     }
 
 
-const init = () => {
-    render();
-    const form = document.querySelector(".js-form");
+    const init = () => {
+        render();
+        const form = document.querySelector(".js-form");
 
-    form.addEventListener("submit", onFormSubmit);
-};
+        form.addEventListener("submit", onFormSubmit);
+    };
 
-init();
+    init();
 }
