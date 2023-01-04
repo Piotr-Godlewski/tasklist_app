@@ -4,10 +4,6 @@
             content: "zrób zakupy",
             done: false,
         },
-        {
-            content: "odbierz dziecko z przedszkola",
-            done: true,
-        },
     ];
 
     const render = () => {
@@ -15,7 +11,7 @@
 
         for (const task of tasks) {
             htmlString += `
-            <li class="unorderedList">
+            <li class="list__item${task.done ? " list__item--done" : ""}">
                 ${task.content}
             </li>
             `;
@@ -24,14 +20,32 @@
         document.querySelector(".js-list").innerHTML = htmlString;
     };
 
-    const init = () => {
-        const form = document.querySelector(".js-form");
+    const addNewTask = (newTaskContent) => {
 
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
+        tasks.push({
+            content: newTaskContent,
         });
         render();
     };
 
-    init();
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+
+        const newTaskContent = document.querySelector(".js-newTask").value.trim();
+
+        if (newTaskContent === "") {
+            return;
+        }
+        addNewTask(newTaskContent);
+    }
+
+
+const init = () => {
+    render();
+    const form = document.querySelector(".js-form");
+
+    form.addEventListener("submit", onFormSubmit);
+};
+
+init();
 }

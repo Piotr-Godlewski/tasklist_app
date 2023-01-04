@@ -1,8 +1,12 @@
-.unorderedList {
+.list__item {
     border-bottom: 1px solid #ddd;
     margin: 15px;
     list-style: none;
     padding: 10px;
+}
+
+.list__item--done {
+text-decoration: line-through;
 }
 
 .js-list {
