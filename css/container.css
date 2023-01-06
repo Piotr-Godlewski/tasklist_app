@@ -1,7 +1,6 @@
 .container {
     background-color: #fff;
     margin: 5px;
-    display: grid;
 }
 
 .container__header {

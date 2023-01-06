@@ -24,11 +24,11 @@
 
         for (const task of tasks) {
             htmlString += `
-            <li class="list__item${task.done ? " list__item--done" : ""}">
+            <li class="list">
                 <button class="js-done list__button list__button--done">${task.done ? "✔" : ""}</button>
-            ${task.content}
+                <span class="list__item${task.done ? " list__item--done" : ""}">${task.content}</span>
                 <button class="js-remove list__button list__button--remove">🗑</button>
-                </li>
+            </li>
             `;
         }
 
@@ -50,8 +50,6 @@
                 toggleTaskDone(index);
             });
         });
-
-
     };
 
     const onFormSubmit = (event) => {

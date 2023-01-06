@@ -1,13 +1,17 @@
-.list {
-display: flex;
-flex-direction: column;
+.tasks{
+    padding: 0px;
+    word-break: break-word;
 }
 
-.list__item {
+.list {
     border-bottom: 1px solid #ddd;
     margin: 15px;
     list-style: none;
     padding: 10px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    grid-gap: 10px
 }
 
 .list__item--done {

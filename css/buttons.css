@@ -4,6 +4,7 @@
     border: none;
     padding: 5px;
     margin: 5px;
+    flex-grow: 1;
 }
 
 .form__button:hover {
