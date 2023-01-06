@@ -11,6 +11,10 @@
     background-color: hsl(180, 100%, 30%);
 }
 
+.form__button:active {
+    border: 1px solid #000;
+}
+
 .list__button {
     width: 30px;
     height: 30px;
@@ -26,6 +30,10 @@
     background-color: hsl(348, 83%, 55%);
 }
 
+.list__button--remove:active {
+    border: 1px solid #000;
+}
+
 .list__button--done {
     background-color: green;
     color: white;
@@ -34,4 +42,8 @@
 
 .list__button--done:hover {
     background-color: hsl(120, 100%, 35%);
+}
+
+.list__button--done:active {
+    border: 1px solid #000;
 }
