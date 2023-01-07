@@ -2,9 +2,14 @@
     background-color: teal;
     color: white;
     border: none;
-    padding: 5px;
+    padding: 10px;
     margin: 5px;
-    flex-grow: 1;
+}
+
+@media (max-width: 767px) {
+    .form__button {
+        width: 100%;
+    }
 }
 
 .form__button:hover {
