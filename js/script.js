@@ -1,5 +1,6 @@
 {
     const tasks = [];
+    let hideDoneTasks = false;
 
     const addNewTask = (newTaskContent) => {
 
@@ -37,20 +38,37 @@
         });
     };
 
-    const render = () => {
+    const renderButtons = () => {
+        let htmlButtons = "";
+        const taskCount = tasks.length;
+        taskCount !== 0 ?
+            htmlButtons += `
+    <button>Ukryj ukończone</button>
+    <button>Ukończ wszystkie</button>`
+            : "";
+        document.querySelector(".js-buttons").innerHTML = htmlButtons
+
+    };
+
+    const renderTasks = () => {
         let htmlString = "";
 
         for (const task of tasks) {
             htmlString += `
-            <li class="list">
-                <button class="js-done list__button list__button--done">${task.done ? "✔" : ""}</button>
-                <span class="list__item${task.done ? " list__item--done" : ""}">${task.content}</span>
-                <button class="js-remove list__button list__button--remove">🗑</button>
-            </li>
-            `;
+        <li class="list">
+            <button class="js-done list__button list__button--done">${task.done ? "✔" : ""}</button>
+            <span class="list__item${task.done ? " list__item--done" : ""}">${task.content}</span>
+            <button class="js-remove list__button list__button--remove">🗑</button>
+        </li>
+        `;
         }
 
         document.querySelector(".js-list").innerHTML = htmlString;
+    };
+
+    const render = () => {
+        renderTasks();
+        renderButtons();
         bindEvents();
     };
 
