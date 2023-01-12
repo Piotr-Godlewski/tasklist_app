@@ -1,24 +1,40 @@
 {
-    const tasks = [];
-    let hideDoneTasks = false;
+    let tasks = [];
+    let hideDoneTasks = false; //do przycisku ukrycia 
 
     const addNewTask = (newTaskContent) => {
-
-        tasks.push({
-            content: newTaskContent,
-        });
+        tasks = [...tasks,
+        { content: newTaskContent }]
         render();
     };
 
     const removeTask = (index) => {
         tasks.splice(index, 1);
         render();
-    }
+    };
 
     const toggleTaskDone = (index) => {
         tasks[index].done = !tasks[index].done;
         render();
-    }
+    };
+
+    const toggleAllTasksDone = () => {
+        tasks = tasks.map((tasks) => ({
+            ...tasks,
+            done: true,
+        }));
+        render();
+    };
+
+    const bindButtonsEvents = () => {
+        const allTasksDoneButtons = document.querySelector(".js-allTasksDone");
+
+        if (allTasksDoneButtons) {
+            allTasksDoneButtons.addEventListener("click", () => {
+                toggleAllTasksDone();
+            })
+        };
+    };
 
     const bindEvents = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
@@ -44,7 +60,7 @@
         taskCount !== 0 ?
             htmlButtons += `
     <button>Ukryj ukończone</button>
-    <button>Ukończ wszystkie</button>`
+    <button class="js-allTasksDone">Ukończ wszystkie</button>`
             : "";
         document.querySelector(".js-buttons").innerHTML = htmlButtons
 
@@ -68,8 +84,9 @@
 
     const render = () => {
         renderTasks();
-        renderButtons();
         bindEvents();
+        renderButtons();
+        bindButtonsEvents();
     };
 
     const onFormSubmit = (event) => {
