@@ -73,8 +73,8 @@
         const taskCount = tasks.length;
         taskCount !== 0 ?
             htmlButtons += `
-    <button class="js-allDoneTasksHidden"> ${hideDoneTasks ? "Pokaż": "Ukryj"} ukończone</button>
-    <button class="js-allTasksDone" ${tasks.every(({done}) => done) ? " disabled" : ""}>Ukończ wszystkie</button>`
+    <button class="buttons js-allDoneTasksHidden"> ${hideDoneTasks ? "Pokaż": "Ukryj"} ukończone</button>
+    <button class="buttons js-allTasksDone" ${tasks.every(({done}) => done) ? " disabled" : ""}>Ukończ wszystkie</button>`
             : "";
         document.querySelector(".js-buttons").innerHTML = htmlButtons
 

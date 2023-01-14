@@ -1,5 +1,6 @@
 .form__button {
     background-color: teal;
+    transition: background-color 1s;
     color: white;
     border: none;
     padding: 10px;
@@ -14,6 +15,8 @@
 
 .form__button:hover {
     background-color: hsl(180, 100%, 30%);
+    transform: scale(1.05);
+    transition: 1s;
 }
 
 .form__button:active {
@@ -26,7 +29,8 @@
 }
 
 .list__button--remove {
-    background-color: crimson;
+    background-color: hsl(348, 83%, 40%);
+    transition: 1s;
     color: white;
     border: none;
 }
@@ -41,6 +45,7 @@
 
 .list__button--done {
     background-color: green;
+    transition: 1s;
     color: white;
     border: none;
 }

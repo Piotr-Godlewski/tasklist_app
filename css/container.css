@@ -9,9 +9,31 @@
     padding: 15px;
     margin: 5px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 60% 40%;
 }
 
 .container__buttons {
-    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.buttons {
+    border: none;
+    color: teal;
+    transition: 1s;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.buttons:hover {
+    color: hsl(180, 100%, 35%);
+}
+
+@media (max-width: 767px) {
+    .container__header {
+        grid-template-columns: 1fr;
+    }
+    .container__buttons {
+        grid-template-columns: 1fr;
+    }
 }
