@@ -17,3 +17,7 @@
 .list__item--done {
 text-decoration: line-through;
 }
+
+.list--hidden {
+    display: none;
+}
