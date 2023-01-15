@@ -4,19 +4,20 @@
 
     const addNewTask = (newTaskContent) => {
         tasks = [...tasks,
-        {
-            content: newTaskContent,
-        }]
+        { content: newTaskContent }];
         render();
     };
 
     const removeTask = (index) => {
-        tasks.splice(index, 1);
+        tasks = [...tasks.slice(0, index),
+        ...tasks.slice(index + 1)];
         render();
     };
 
     const toggleTaskDone = (index) => {
-        tasks[index].done = !tasks[index].done;
+        tasks = [...tasks.slice(0, index),
+        { ...tasks[index], done: !tasks[index].done },
+        ...tasks.slice(index + 1)];
         render();
     };
 
@@ -50,15 +51,17 @@
         };
     };
 
-    const bindEvents = () => {
+    const bindRemoveEvents = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
 
         removeButtons.forEach((removeButton, index) => {
             removeButton.addEventListener("click", () => {
                 removeTask(index);
             });
-
         });
+    }
+
+    const bindToogleDoneEvents = () => {
         const toggleDoneButtons = document.querySelectorAll(".js-done");
 
         toggleDoneButtons.forEach((toggleDoneButton, index) => {
@@ -68,13 +71,18 @@
         });
     };
 
+    const bindEvents = () => {
+        bindRemoveEvents();
+        bindToogleDoneEvents();
+    };
+
     const renderButtons = () => {
         let htmlButtons = "";
         const taskCount = tasks.length;
         taskCount !== 0 ?
             htmlButtons += `
-    <button class="buttons js-allDoneTasksHidden"> ${hideDoneTasks ? "Pokaż": "Ukryj"} ukończone</button>
-    <button class="buttons js-allTasksDone" ${tasks.every(({done}) => done) ? " disabled" : ""}>Ukończ wszystkie</button>`
+    <button class="buttons js-allDoneTasksHidden"> ${hideDoneTasks ? "Pokaż" : "Ukryj"} ukończone</button>
+    <button class="buttons js-allTasksDone" ${tasks.every(({ done }) => done) ? " disabled" : ""}>Ukończ wszystkie</button>`
             : "";
         document.querySelector(".js-buttons").innerHTML = htmlButtons
 

@@ -29,6 +29,10 @@
     color: hsl(180, 100%, 35%);
 }
 
+.buttons:disabled{
+    color: #ddd;
+}
+
 @media (max-width: 767px) {
     .container__header {
         grid-template-columns: 1fr;
