@@ -1,6 +1,6 @@
 .form__button {
     background-color: teal;
-    transition: background-color 1s;
+    transition: 1s;
     color: white;
     border: none;
     padding: 10px;
@@ -56,4 +56,30 @@
 
 .list__button--done:active {
     border: 1px solid #000;
+}
+
+.container__buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.buttons {
+    border: none;
+    color: teal;
+    transition: 1s;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.buttons:hover {
+    color: hsl(180, 100%, 35%);
+}
+
+.buttons:disabled{
+    color: #ddd;
+}
+@media (max-width: 767px) {
+    .container__buttons {
+        grid-template-columns: 1fr;
+    }
 }

@@ -5,3 +5,10 @@ html {
 *, ::after, ::before {
     box-sizing: inherit;
 }
+
+.body {
+    background-color: #eee;
+    font-family: 'Calibri' , sans-serif;
+    display: grid;
+    grid-template-columns: minmax(0, 1000px);
+}
